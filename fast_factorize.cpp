@@ -1,6 +1,6 @@
 #define MXNUM 10000000
-ll mindiv[MXNUM+4];
-void fac_init(){
+ll mindiv[MXNUM + 4];
+void fac_init() {
     for (int i = 2; i <= MXNUM; i++)mindiv[i] = i;
     for (int i = 2; i * i <= MXNUM; i++) {
         if (mindiv[i] != i) continue;
@@ -9,7 +9,7 @@ void fac_init(){
         }
     }
 }
-vl fac(ll num){
+vl fac(ll num) {//just giving primes
     vl ret;
     ll curVal = num;
     while (curVal != 1) {
@@ -20,3 +20,18 @@ vl fac(ll num){
     }
     return ret;
 }
+vp fac_i(ll num){
+    vp ret;
+    ll curVal = num;
+    while(curVal!=1){
+        if (ret.empty() || ret.back().first != mindiv[curVal]) {
+            ret.push_back({ mindiv[curVal],1 });
+        }
+        else if(ret.back().first==mindiv[curVal]){
+            ret.back().second++;
+        }
+        curVal /= mindiv[curVal];
+    }
+    return ret;
+}
+//don't for get to write fac_init(); in main()
