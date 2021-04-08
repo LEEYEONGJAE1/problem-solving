@@ -1,12 +1,16 @@
 #define MXNUM 10000000
-ll mindiv[MXNUM + 4];
+ll mindiv[MXNUM + 13],val[MXNUM+13];
 void fac_init() {
-    for (int i = 2; i <= MXNUM; i++)mindiv[i] = i;
+    for (int i = 2; i <= MXNUM; i++) mindiv[i] = i;
     for (int i = 2; i * i <= MXNUM; i++) {
         if (mindiv[i] != i) continue;
         for (int j = i; j <= MXNUM; j += i) {
             mindiv[j] = Min(mindiv[j], i);
         }
+    }
+    for (int i = 2; i <= MXNUM; i++) {
+        int j = i / mindiv[i];
+        val[i] = val[j] + (mindiv[i] != mindiv[j]);
     }
 }
 vl fac(ll num) {//just giving primes
