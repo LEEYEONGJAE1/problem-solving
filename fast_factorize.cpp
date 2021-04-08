@@ -1,5 +1,5 @@
 #define MXNUM 10000000
-ll mindiv[MXNUM + 13],val[MXNUM+13];
+ll mindiv[MXNUM + 13],val[MXNUM+13]; //mindiv[i]= mininum prime divisor of i, val[i] = the number of prime divisors of i
 void fac_init() {
     for (int i = 2; i <= MXNUM; i++) mindiv[i] = i;
     for (int i = 2; i * i <= MXNUM; i++) {
